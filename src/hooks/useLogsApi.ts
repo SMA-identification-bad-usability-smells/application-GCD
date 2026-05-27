@@ -14,8 +14,8 @@ export const useLogsApi = () => {
     try {
       console.log(`[API] Enviando lote de ${logs.length} logs...`);
       
-      const response = await api.post('/api/logs', {
-        content: logs,
+      const response = await api.post('/api/logs/', {
+        content: `${logs}`,
       });
 
       if (response.status >= 200 && response.status < 300) {
