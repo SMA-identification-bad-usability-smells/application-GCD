@@ -3,13 +3,21 @@
   "version": "1.0.0",
   "main": "index.ts",
   "dependencies": {
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "@react-native-community/datetimepicker": "9.1.0",
+    "@react-native-picker/picker": "2.11.4",
     "expo": "~56.0.3",
     "expo-status-bar": "~56.0.4",
     "react": "19.2.3",
-    "react-native": "0.85.3"
+    "react-dom": "^19.2.3",
+    "react-native": "0.85.3",
+    "react-native-web": "^0.21.2",
+    "styled-components": "^6.4.2"
   },
   "devDependencies": {
     "@types/react": "~19.2.2",
+    "@types/styled-components": "^5.1.36",
+    "@types/styled-components-react-native": "^5.2.5",
     "typescript": "~6.0.3"
   },
   "scripts": {
