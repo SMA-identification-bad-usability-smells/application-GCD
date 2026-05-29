@@ -23,9 +23,10 @@ export const InteractionTracker: React.FC<InteractionTrackerProps> = ({ children
   };
 
   const addLog = (log: InteractionLog) => {
+    console.log(log);
     logsQueue.current.push(log);
 
-    if (logsQueue.current.length >= 8) {
+    if (logsQueue.current.length >= 5) {
       const batchToSend = [...logsQueue.current];
       logsQueue.current = [];
       sendLogs(batchToSend);
@@ -44,6 +45,7 @@ export const InteractionTracker: React.FC<InteractionTrackerProps> = ({ children
       timestamp,
       coordinates: { x: pageX, y: pageY },
       targetElementId: targetId,
+      direction: ''
     };
 
     addLog(newLog);
