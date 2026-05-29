@@ -23,11 +23,9 @@ export const InteractionTracker: React.FC<InteractionTrackerProps> = ({ children
   };
 
   const addLog = (log: InteractionLog) => {
-    console.log(log);
-
     logsQueue.current.push(log);
 
-    if (logsQueue.current.length >= 5) {
+    if (logsQueue.current.length >= 8) {
       const batchToSend = [...logsQueue.current];
       logsQueue.current = [];
       sendLogs(batchToSend);
@@ -61,7 +59,7 @@ export const InteractionTracker: React.FC<InteractionTrackerProps> = ({ children
     const deltaY = pageY - touchStartPos.current.y;
     const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
-    // Consideramos um gesto de arrasto se o deslocamento for maior que 20 pixels
+    // gesto de arrasto se o deslocamento for maior que 20 pixels
     if (distance > 20) {
       const timestamp = new Date().toISOString();
       const targetId = extractTargetId(target);
