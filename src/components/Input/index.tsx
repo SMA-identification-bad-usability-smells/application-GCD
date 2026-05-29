@@ -4,14 +4,16 @@ import { InputContainer, Label, StyledTextInput, PlaceholderColor } from '../Bas
 
 interface InputProps extends TextInputProps {
   label: string;
+  isFilled?: boolean;
 }
 
-export const Input: React.FC<InputProps> = ({ label, ...rest }) => {
+export const Input: React.FC<InputProps> = ({ label, isFilled, ...rest }) => {
   return (
     <InputContainer>
       <Label>{label}</Label>
       <StyledTextInput 
-        placeholderTextColor={PlaceholderColor} 
+        isFilled={isFilled}
+        placeholderTextColor={isFilled ? '#666' : PlaceholderColor} 
         {...rest} 
       />
     </InputContainer>

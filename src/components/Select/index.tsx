@@ -10,28 +10,39 @@ interface Option {
 interface SelectProps<T = string | number> extends PickerProps<T> {
   label: string;
   options: Option[];
+  isFilled?: boolean;
 }
 
-export function Select<T extends string | number>({ label, options, ...rest }: SelectProps<T>) {
+export function Select<T extends string | number>({ label, options, isFilled, ...rest }: SelectProps<T>) {
+  const textColor = isFilled ? '#000000' : '#E1E1E6';
+  
   return (
     <InputContainer>
       <Label>{label}</Label>
-      <InputWrapper>
+      <InputWrapper isFilled={isFilled}>
         <Picker
           {...rest}
+          mode="dropdown"
           style={{
             width: '100%',
             height: 50,
             borderWidth: 0,
-            backgroundColor: '#fff',
-            color: '#333',
-          }}>
+            backgroundColor: 'transparent',
+            color: textColor,
+            // @ts-ignore - Suporte para remover outline no Web
+            outline: 'none',
+          }}
+          dropdownIconColor={textColor}>
           {options.map((option) => (
             <Picker.Item 
               key={option.value} 
               label={option.label} 
               value={option.value as any} 
-              style={{ fontSize: 16 }}
+              color="#000000"
+              style={{ 
+                fontSize: 16, 
+                backgroundColor: '#FFFFFF',
+              }}
             />
           ))}
         </Picker>
