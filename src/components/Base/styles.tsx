@@ -17,20 +17,20 @@ export const PlaceholderColor = '#7C7C8A';
 export const StyledTextInput = styled.TextInput<{ isFilled?: boolean }>`
   width: 100%;
   height: 50px;
-  background-color: ${({ isFilled }) => isFilled ? '#E8F0FE' : '#202024'};
+  background-color: #FFFFFF;
   border-radius: 8px;
-  border: 1px solid ${({ isFilled }) => isFilled ? '#E8F0FE' : '#323238'};
+  border: 1px solid #E1E1E6;
   font-size: 16px;
-  color: ${({ isFilled }) => isFilled ? '#000000' : '#E1E1E6'};
+  color: #000000;
   padding: 12px;
 `;
 
 export const InputWrapper = styled.View<{ isFilled?: boolean }>`
   width: 100%;
   height: 50px;
-  background-color: ${({ isFilled }) => isFilled ? '#E8F0FE' : '#202024'};
+  background-color: #FFFFFF;
   border-radius: 8px;
-  border: 1px solid ${({ isFilled }) => isFilled ? '#E8F0FE' : '#323238'};
+  border: 1px solid #E1E1E6;
   justify-content: center;
   overflow: hidden;
 `;

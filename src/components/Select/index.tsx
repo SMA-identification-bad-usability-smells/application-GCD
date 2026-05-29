@@ -1,6 +1,6 @@
 import React from 'react';
 import { Picker, PickerProps } from '@react-native-picker/picker';
-import { InputContainer, Label, InputWrapper } from '../Base/styles';
+import { InputContainer, Label, InputWrapper, PlaceholderColor } from '../Base/styles';
 
 interface Option {
   label: string;
@@ -14,7 +14,7 @@ interface SelectProps<T = string | number> extends PickerProps<T> {
 }
 
 export function Select<T extends string | number>({ label, options, isFilled, ...rest }: SelectProps<T>) {
-  const textColor = isFilled ? '#000000' : '#E1E1E6';
+  const textColor = isFilled ? '#000000' : '#757575';
   
   return (
     <InputContainer>
@@ -26,9 +26,8 @@ export function Select<T extends string | number>({ label, options, isFilled, ..
           style={{
             width: '100%',
             height: 50,
-            borderWidth: 0,
-            backgroundColor: 'transparent',
             color: textColor,
+            backgroundColor: '#FFFFFF',
             // @ts-ignore - Suporte para remover outline no Web
             outline: 'none',
           }}
