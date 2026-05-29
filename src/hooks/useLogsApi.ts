@@ -7,6 +7,7 @@ export interface InteractionLog {
   timestamp: string;
   coordinates: { x: number; y: number };
   targetElementId: number | string;
+  direction?: 'up' | 'down' | 'left' | 'right';
 }
 
 export const useLogsApi = () => {
