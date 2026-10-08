@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { GestureResponderEvent, ViewProps } from 'react-native';
 import styled from 'styled-components/native';
 import { useLogsApi, InteractionLog } from '../../hooks/useLogsApi';
+import { useDeviceId } from '../../hooks/useDeviceId';
 
 const CaptureContainer = styled.View`
   flex: 1;
@@ -13,6 +14,7 @@ interface InteractionTrackerProps extends ViewProps {
 
 export const InteractionTracker: React.FC<InteractionTrackerProps> = ({ children, ...rest }) => {
   const { sendLogs } = useLogsApi();
+  const deviceId = useDeviceId();
   const logsQueue = useRef<InteractionLog[]>([]);
   const touchStartPos = useRef<{ x: number; y: number } | null>(null);
 
@@ -45,7 +47,8 @@ export const InteractionTracker: React.FC<InteractionTrackerProps> = ({ children
       timestamp,
       coordinates: { x: pageX, y: pageY },
       targetElementId: targetId,
-      direction: ''
+      direction: '',
+      user: deviceId
     };
 
     addLog(newLog);
@@ -80,6 +83,7 @@ export const InteractionTracker: React.FC<InteractionTrackerProps> = ({ children
         coordinates: touchStartPos.current,
         targetElementId: targetId,
         direction,
+        user: deviceId
       };
 
       addLog(dragLog);

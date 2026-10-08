@@ -8,16 +8,20 @@ export interface InteractionLog {
   coordinates: { x: number; y: number };
   targetElementId: number | string;
   direction: 'up' | 'down' | 'left' | 'right' | "";
+  user: string | "";
 }
 
 export const useLogsApi = () => {
   const sendLogs = useCallback(async (logs: InteractionLog[]) => {
     try {
       console.log(`[API] Enviando lote de ${logs.length} logs...`);
+
+      console.log(`[LISTA] Logs coletados: ${JSON.stringify(logs)}\n`)
       
-      const response = await api.post('/api/logs/', {
-        content: JSON.stringify(logs),
-      });
+      const response = await api.post(
+        '/api/logs', 
+        logs
+      );
 
       if (response.status >= 200 && response.status < 300) {
         console.log('[API SUCCESS] Logs enviados com sucesso.');
